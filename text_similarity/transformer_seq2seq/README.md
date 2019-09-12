@@ -2,7 +2,8 @@
 # 基于transformer的seq2seq模型
 
 transformer:
-A TensorFlow Implementation of [Attention Is All You Need](https://arxiv.org/abs/1706.03762)
+A TensorFlow Implementation of [Attention Is All You Need](https://arxiv.org/abs/1706.03762)  
+原始项目: https://github.com/Kyubyong/transformer  
 
 ## Requirements
 * python==3.x (Let's move on to python 3 if you still use python 2)
