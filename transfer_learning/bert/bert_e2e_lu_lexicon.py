@@ -905,10 +905,6 @@ def domain_and_intent_and_slot_model_fn_builder(bert_config,
               scaffold_fn=scaffold_fn,
               training_hooks = [logging_hook])
             
-            
-            domain_intent_loss, per_example_domain_intent_loss, domain_intent_logits, domain_intent_prob, \
-            
-            
         if mode == tf.estimator.ModeKeys.EVAL:
             def metric_fn(per_example_domain_intent_loss, domain_intent_label_id, domain_intent_logits, 
                          slot_label_ids, slot_pred_ids):

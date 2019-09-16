@@ -1,0 +1,52 @@
+#!/bin/bash
+export LD_LIBRARY_PATH=/home/cuda/cuda-9.0/lib64/:/home/cuda/cuda-10.1/extras/CUPTI/lib64/
+export CUDA_VISIBLE_DEVICES=""
+
+set -e
+
+# 定义任务的名称
+export NAME_SPACE=aspect_ner_model
+# 定义bert model 路径
+# en bert
+export BERT_BASE_DIR=./models/uncased_L-12_H-768_A-12
+# 定义bert 最大长度
+export MAX_SEQ_LENGTH=128
+# 定义bert batch size 
+export TRAIN_BATCH_SIZE=16
+# 定义bert learing rate
+export LEARNING_RATE=5e-5
+# 定义bert epochs
+export NUM_TRAIN_EPOCHS=10
+# 定义只使用crf不要bi lstm
+export CRF_ONLY=False
+
+
+# 默认设置，最好不要改
+export OUTPUT_DIR=${NAME_SPACE}/model_output
+
+rm -rf ${NAME_SPACE}
+
+mkdir ${NAME_SPACE}
+mkdir -p ${OUTPUT_DIR}
+
+cp ./semeval_aspect_ner/slot_labels.txt ${NAME_SPACE}
+cp ./semeval_aspect_ner/train_data.json ${NAME_SPACE}
+cp ./semeval_aspect_ner/dev_data.json ${NAME_SPACE}
+cp ./semeval_aspect_ner/test_data.json ${NAME_SPACE}
+
+python bert_ner.py   \
+      --task_name=$NAME_SPACE  \
+      --do_train=True   \
+      --do_eval=True  \
+      --do_predict=False \
+      --do_export=False \
+      --data_dir=$NAME_SPACE   \
+      --vocab_file=$BERT_BASE_DIR/vocab.txt  \
+      --bert_config_file=$BERT_BASE_DIR/bert_config.json \
+      --init_checkpoint=$BERT_BASE_DIR/bert_model.ckpt   \
+      --max_seq_length=$MAX_SEQ_LENGTH   \
+      --train_batch_size=$TRAIN_BATCH_SIZE   \
+      --learning_rate=$LEARNING_RATE   \
+      --num_train_epochs=$NUM_TRAIN_EPOCHS   \
+      --crf_only=${CRF_ONLY} \
+      --output_dir=$OUTPUT_DIR
