@@ -2,12 +2,9 @@
 
 '''
 
-每次找到有序的区间查看 target 是否在里面,如果在里面直接在这区间寻找
-如果不在则继续从另一边不是有序的区间继续二分
-时间复杂度 O(log(n)) 
+方法就是二分查找，但是很烧脑
 
 '''
-
 
 # https://leetcode-cn.com/problems/search-in-rotated-sorted-array/
 
@@ -27,6 +24,14 @@ class Solution(object):
       a = nums[i]
       b = nums[j]
       c = nums[idx]
+      '''
+      中点位于右边升序数组
+        目标值大于中点，目标值小于右点 - 目标值在右边升序数组的右边
+        否则 - 目标值位于左边升序数组或右边升序数组的左边
+      中点位于左边升序数组
+        目标值小于中点，目标值大于左点 - 目标值在左边升序数组的左边
+        否则 - 目标值位于左边升序数组的右边或右边升序数组
+      '''
       if a > c:
         if target > c and target <= b:
           i = idx + 1

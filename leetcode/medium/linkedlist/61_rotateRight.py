@@ -27,6 +27,7 @@ class Solution(object):
       return head
     length = 1
     end = head
+    # 先计算链表的长度
     while end.next:
       length += 1
       end = end.next

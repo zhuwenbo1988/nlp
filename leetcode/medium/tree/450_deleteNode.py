@@ -30,11 +30,13 @@ class Solution(object):
     elif root.val < key:
       root.right = self.deleteNode(root.right, key)
     else:
+      # 左右子树其中一个为空
       if not root.left or not root.right:
         if root.left:
           root = root.left
         else:
           root = root.right
+      # 难点
       else:
         # 取出右子树
         cur = root.right

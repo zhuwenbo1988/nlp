@@ -4,6 +4,8 @@
 
 三指针
 
+0，1，2 排序。一次遍历，如果是0，则移动到表头，如果是2，则移动到表尾，不用考虑1
+
 '''
 
 # https://leetcode-cn.com/problems/sort-colors

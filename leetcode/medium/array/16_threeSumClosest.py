@@ -17,6 +17,7 @@ class Solution(object):
     :type target: int
     :rtype: int
     """
+    # 必须要排序
     nums.sort()
 
     min_gap = sys.maxint
@@ -24,6 +25,7 @@ class Solution(object):
     for i in range(len(nums)):
       s = i+1
       e = len(nums)-1
+      # 双指针
       while s < e:
         three_sum = nums[i] + nums[s] + nums[e]
         gap = abs(target - three_sum)

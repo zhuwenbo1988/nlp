@@ -5,6 +5,7 @@
 '''
 超时
 '''
+
 class Solution(object):
   def threeSum(self, nums):
     """
@@ -23,6 +24,7 @@ class Solution(object):
         l = []
         for c in other:
           if a+b+c == 0:
+            # 下面都是去重的逻辑
             pair = [a, b, c]
             pair.sort()
             key = '-'.join([str(n) for n in pair])

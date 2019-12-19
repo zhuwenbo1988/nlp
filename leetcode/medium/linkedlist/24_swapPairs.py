@@ -18,12 +18,15 @@ class Solution(object):
     first = tmp_node
     while True:
       pre = head
+      # 没有第一个节点
       if not pre:
         break
       curr = head.next
+      # 没有第二个节点
       if not curr:
         tmp_node.next = pre
         break
+      # 交换
       head = curr.next
       pre.next = curr.next
       curr.next = pre

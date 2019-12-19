@@ -1,5 +1,11 @@
 # coding=utf-8
 
+'''
+
+经典动态规划
+
+'''
+
 # https://leetcode-cn.com/problems/minimum-path-sum
 
 class Solution(object):

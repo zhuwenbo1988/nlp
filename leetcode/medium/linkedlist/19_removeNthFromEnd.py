@@ -15,20 +15,18 @@ class Solution(object):
     :type n: int
     :rtype: ListNode
     """
-    nodes = []
+    dump = ListNode(0)
+    first = dump
     while head:
-      tmp_node = head
       i = 1
-      while tmp_node.next:
-        tmp_node = tmp_node.next
+      tmp = head
+      while tmp.next:
         i += 1
+        tmp = tmp.next
       if i == n:
-        if len(nodes) == 0:
-          nodes.append(head.next)
-        else:
-          pre_node = nodes[-1]
-          pre_node.next = head.next
+        dump.next = head.next
         break
-      nodes.append(head)
+      dump.next = head
+      dump = dump.next
       head = head.next
-    return nodes[0]
+    return first.next
