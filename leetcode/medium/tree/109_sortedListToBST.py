@@ -35,6 +35,7 @@ class Solution(object):
       return TreeNode(head.val)
     slow = head
     fast = head
+    # 不要忘记把慢指针分割出来
     pre = head
     while fast and fast.next:
       pre = slow
