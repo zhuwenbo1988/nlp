@@ -26,10 +26,12 @@ class Solution(object):
       if not curr:
         tmp_node.next = pre
         break
-      # 交换
+      # head置于下一个要处理的节点
       head = curr.next
+      # 两两交换
       pre.next = curr.next
       curr.next = pre
       tmp_node.next = curr
+      # tmp_node置于下一个要处理的节点的前一个节点
       tmp_node = pre
     return first.next

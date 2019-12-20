@@ -24,6 +24,7 @@ class Solution(object):
           break
         head = head.next
         i += 1
+      # head的值是存在重复的，全部删去
       if i > 0:
         pre_dump.next = head.next
       else:

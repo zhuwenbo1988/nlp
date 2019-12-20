@@ -31,6 +31,7 @@ class Solution(object):
       fast = fast.next.next
     
     # 翻转链表
+    # slow的下一个是后半段
     node = slow.next
     dump = ListNode(0)
     while node:
@@ -41,6 +42,7 @@ class Solution(object):
     # 截取前半段和后半段
     right = dump.next
     left = head
+    # 别忘了把前半段隔出来
     slow.next = None
 
     # 将后半段插入前半段

@@ -31,6 +31,7 @@ class Solution(object):
     while end.next:
       length += 1
       end = end.next
+    # 计算切分的位置
     n = k % length
     if n == 0:
       return head
@@ -42,7 +43,10 @@ class Solution(object):
         break
       m += 1
       cut = cut.next
+    # 新的表头
     new_head = cut.next
+    # 新的表尾
     cut.next = None
+    # 两段连接起来
     end.next = head
     return new_head

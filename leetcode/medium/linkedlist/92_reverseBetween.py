@@ -25,21 +25,26 @@ class Solution(object):
     if m == n:
       return head
     pre_dump = ListNode(0)
-    pre_dump.next = head
     pre_last = pre_dump
     idx = 1
+    # 小于m的部分正常处理
     while idx < m:
-      pre_last = head
+      pre_last.next = head
+      pre_last = pre_last.next
       head = head.next
       idx += 1
     new_head = ListNode(0)
+    # 被反转的链表的最后一个节点，巧妙
     last = head
+    # m和n中间的用头插法
     while idx < n+1:
       curr = head
       head = head.next
+      # 头插法
       curr.next = new_head.next
       new_head.next = curr
       idx += 1
+    # 大于m
     pre_last.next = new_head.next
     last.next = head
     return pre_dump.next

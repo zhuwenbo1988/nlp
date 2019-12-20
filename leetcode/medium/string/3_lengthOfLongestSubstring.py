@@ -14,12 +14,11 @@ class Solution(object):
     for c in s:
       # 遇到重复字符了
       if c in sub_dict:
-        n = len(sub)
-        if n > max_len:
-          max_len = n
+        if len(sub) > max_len:
+          max_len = len(sub)
         # i是c在sub中的位置
         i = sub_dict[c]
-        # 删除c，重新在sub_dict中设置每个字符的位置
+        # 从sub，重新在sub_dict中设置每个字符的位置
         sub = sub[i+1:]
         sub_dict = {}
         for i, c1 in enumerate(sub):
@@ -27,7 +26,7 @@ class Solution(object):
       sub.append(c)
       # 存储c在sub中的位置
       sub_dict[c] = len(sub) - 1
-    n = len(sub)
-    if n > max_len:
-      max_len = n
+    # 别忘了比较最后一个子串
+    if len(sub) > max_len:
+      max_len = len(sub)
     return max_len

@@ -1,5 +1,11 @@
 # coding=utf-8
 
+'''
+
+O(n^2)
+
+'''
+
 # https://leetcode-cn.com/problems/insertion-sort-list/
 
 # Definition for singly-linked list.
@@ -17,17 +23,12 @@ class Solution(object):
     if not head or not head.next:
       return head
     dump = ListNode(0)
-    dump.next = head
-    while head and head.next:
-      if head.val <= head.next.val:
-        head = head.next
-        continue
-      pre = dump
-      while pre.next.val < head.next.val:
-        pre = pre.next
-        continue
-      curr = head.next
-      head.next = curr.next
-      curr.next = pre.next
-      pre.next = curr
+    while head:
+      cur = dump
+      while cur.next and cur.next.val < head.val:
+        cur = cur.next
+      node = head
+      head = head.next
+      node.next = cur.next
+      cur.next = node
     return dump.next

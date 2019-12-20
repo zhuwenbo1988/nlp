@@ -60,4 +60,3 @@ class Solution(object):
     if right:
       head.next = right
     return dump.next
-

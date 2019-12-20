@@ -2,7 +2,7 @@
 
 '''
 
-动态规划 + 中心拓展
+中心拓展
 
 '''
 
@@ -19,12 +19,13 @@ class Solution(object):
       # 以c为中心，重新计算
       curr_p = []
       curr_p.append(s[i])
-      b_i = i-1
+
       # 扩展中心
       for j in range(i+1, len(s)):
         if s[i] != s[j]:
           break
         curr_p.append(s[j])
+      b_i = i-1
       e_i = i+len(curr_p)
       # 从中心向两侧扩展
       while b_i > -1 and e_i < len(s):
