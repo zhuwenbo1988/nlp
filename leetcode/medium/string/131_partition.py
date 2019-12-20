@@ -4,6 +4,8 @@
 
 完全不会
 
+回溯
+
 '''
 
 # https://leetcode-cn.com/problems/palindrome-partitioning/
@@ -16,6 +18,7 @@ class Solution(object):
     """
     result = []
     def find(sub_s, tmp):
+      # 剩余的部分是回文
       if sub_s == sub_s[::-1]:
         # 不return
         result.append(tmp + [sub_s])
