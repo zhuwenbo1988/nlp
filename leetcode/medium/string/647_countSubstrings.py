@@ -10,8 +10,8 @@ class Solution(object):
     """
     result = 0
     n = len(s)
-
-    # dp[i][j] 表示[i,j]的字符是否为回文子串
+    
+    # dp[i][j] 表示以j开头以i结尾的字符是否为回文子串
     dp = [[0]*n for i in range(n)]
     # 外层循环要倒着写，内层循环要正着写
     for i in range(n-1, -1, -1):
