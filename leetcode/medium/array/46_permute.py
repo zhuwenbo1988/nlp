@@ -11,11 +11,11 @@ class Solution(object):
     :rtype: List[List[int]]
     """
     result = []
-    def back(other, ans):
+    def back(other, curr):
       if not other:
-        result.append(ans)
+        result.append(curr)
         return
       for i in range(len(other)):
-        back(other[:i] + other[i+1:], ans + [other[i]])
+        back(other[:i] + other[i+1:], curr + [other[i]])
     back(nums, [])
     return result

@@ -24,11 +24,7 @@ class Solution(object):
     result = nums[0]
 
     for i in range(1, n):
-      a = max_l[i-1] * nums[i]
-      b = max(min_l[i-1] * nums[i], nums[i])
-      max_l[i] = max(a, b)
-      a = max_l[i-1] * nums[i]
-      b = min(min_l[i-1] * nums[i], nums[i])
-      min_l[i] = min(a, b)
+      max_l[i] = max(max_l[i-1] * nums[i], min_l[i-1] * nums[i], nums[i])
+      min_l[i] = min(max_l[i-1] * nums[i], min_l[i-1] * nums[i], nums[i])
       result = max(result, max_l[i])
     return result

@@ -2,7 +2,7 @@
 
 '''
 
-三指针
+我们用三个指针来分别追踪0的最右边界，2的最左边界和当前考虑的元素
 
 0，1，2 排序。一次遍历，如果是0，则移动到表头，如果是2，则移动到表尾，不用考虑1
 
@@ -16,20 +16,20 @@ class Solution(object):
     :type nums: List[int]
     :rtype: None Do not return anything, modify nums in-place instead.
     """
-    s = 0
-    m = 0
-    e = len(nums) - 1
-    while m <= e:
-      if nums[m] == 2:
-        tmp = nums[e]
-        nums[e] = nums[m]
-        nums[m] = tmp
-        e += -1
-      elif nums[m] == 0:
-        nums[s] = 0
-        if m > s:
-          nums[m] = 1
-        s += 1
-        m += 1
+    p0 = 0
+    curr = 0
+    p2 = len(nums) - 1
+    while curr <= p2:
+      if nums[curr] == 2:
+        tmp = nums[p2]
+        nums[p2] = nums[curr]
+        nums[curr] = tmp
+        p2 += -1
+      elif nums[curr] == 0:
+        tmp = nums[p0]
+        nums[p0] = nums[curr]
+        nums[curr] = tmp
+        p0 += 1
+        curr += 1
       else:
-        m += 1
+        curr += 1

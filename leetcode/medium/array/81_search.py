@@ -18,7 +18,7 @@ class Solution(object):
             if target == nums[m]:
                 return True
             if nums[m] > nums[l]:  # 左边升序
-                if target >= nums[l] and target < nums[m]:
+                if target < nums[m] and target >= nums[l]:
                     r = m - 1
                 else:
                     l = m + 1

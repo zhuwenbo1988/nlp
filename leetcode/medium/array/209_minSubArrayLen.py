@@ -1,5 +1,15 @@
 # coding=utf-8
 
+'''
+
+因为是连续子序列,所以用双指针来滑动窗口
+
+不要用数组来装中间结果,会超时
+
+数组和给出的数都是正整数,使得这题能用这种方法
+
+'''
+
 # https://leetcode-cn.com/problems/minimum-size-subarray-sum/
 
 class Solution(object):
@@ -16,7 +26,6 @@ class Solution(object):
     result = len(nums)
     curr_sum = 0
     while r < len(nums):
-      print curr_sum
       while curr_sum < s and r < len(nums):
         curr_sum += nums[r]
         r += 1

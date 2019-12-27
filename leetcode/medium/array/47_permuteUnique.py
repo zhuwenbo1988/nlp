@@ -1,5 +1,11 @@
 # coding=utf-8
 
+'''
+
+与46的唯一区别就是增加了去重
+
+'''
+
 # https://leetcode-cn.com/problems/permutations-ii/
 
 class Solution(object):
@@ -10,7 +16,7 @@ class Solution(object):
     """
     d = {}
     result = []
-    def p(curr, other):
+    def p(other, curr):
       if not other:
         key = ''.join([str(i) for i in curr])
         if key not in d:
@@ -18,6 +24,6 @@ class Solution(object):
           d[key] = 1
         return
       for i in range(len(other)):
-        p(curr + [other[i]], other[:i] + other[i+1:])
-    p([], nums)
+        p(other[:i] + other[i+1:], curr + [other[i]])
+    p(nums, [])
     return result
