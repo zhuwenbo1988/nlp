@@ -3,7 +3,11 @@
 # https://leetcode-cn.com/problems/3sum/
 
 '''
-超时
+
+三指针
+
+https://leetcode-cn.com/problems/3sum/solution/pai-xu-shuang-zhi-zhen-zhu-xing-jie-shi-python3-by/
+
 '''
 
 class Solution(object):
@@ -13,24 +17,25 @@ class Solution(object):
     :rtype: List[List[int]]
     """
     result = []
-    unique_map = {}
-    for i in range(len(nums)):
-      for j in range(i+1, len(nums)):
-        a = nums[i]
-        b = nums[j]
-        other = []
-        other.extend(nums[i+1:j])
-        other.extend(nums[j+1:])
-        l = []
-        for c in other:
-          if a+b+c == 0:
-            # 下面都是去重的逻辑
-            pair = [a, b, c]
-            pair.sort()
-            key = '-'.join([str(n) for n in pair])
-            if key in unique_map:
-              continue
-            l.append([a, b, c])
-            unique_map[key] = 1
-        result.extend(l)
+    nums.sort()
+    n = len(nums)
+    for i in range(n):
+      if i > 0 and nums[i] == nums[i-1]:
+        continue
+      left = i + 1
+      right = n - 1
+      while left < right:
+        s = nums[i] + nums[left] + nums[right]
+        if s == 0:
+          result.append((nums[i], nums[left], nums[right]))
+          while left < right and nums[left] == nums[left+1]:
+            left += 1
+          while left < right and nums[right] == nums[right-1]:
+            right += -1
+          left += 1
+          right += -1
+        elif s > 0:
+          right += -1
+        else:
+          left += 1
     return result

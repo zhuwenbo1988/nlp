@@ -1,11 +1,5 @@
 # coding=utf-8
 
-'''
-
-超时
-
-'''
-
 # https://leetcode-cn.com/problems/combination-sum-ii/
 
 class Solution(object):
@@ -15,14 +9,17 @@ class Solution(object):
     :type target: int
     :rtype: List[List[int]]
     """
+    candidates.sort()
     result = []
-    def add(curr_sum, other, tmp):
-      if curr_sum == target and sorted(tmp) not in result:
+    def add(other, tmp):
+      if sum(tmp) == target and sorted(tmp) not in result:
         result.append(sorted(tmp))
         return
-      if curr_sum > target or not other:
+      if sum(tmp) > target or not other:
         return
       for i in range(len(other)):
-        add(curr_sum + other[i], other[:i] + other[i+1:], tmp + [other[i]])
-    add(0, candidates, [])
+        if i > 0 and other[i] == other[i-1]:
+            continue
+        add(other[i+1:], tmp + [other[i]])
+    add(candidates, [])
     return result

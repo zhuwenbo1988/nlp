@@ -17,13 +17,13 @@ class Solution(object):
     """
     result = []
     tmp = []
-    def find(i, curr_sum, tmp):
-      if curr_sum == target:
+    def find(i, tmp):
+      if sum(tmp) == target:
         result.append(tmp)
         return
-      if curr_sum > target or i == len(candidates):
+      if sum(tmp) > target or i == len(candidates):
         return
-      find(i, curr_sum + candidates[i], tmp + [candidates[i]])
-      find(i+1, curr_sum, tmp)
-    find(0, 0, tmp)
+      find(i, tmp + [candidates[i]])
+      find(i+1, tmp)
+    find(0, tmp)
     return result
