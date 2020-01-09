@@ -17,14 +17,14 @@ class Solution(object):
     :type k: int
     :rtype: List[int]
     """
-    d = {}
+    # 一定要先统计频次
+    freq_dict = {}
     for n in nums:
-      d[n] = d.get(n, 0) + 1
-
+      freq_dict[n] = freq_dict.get(n, 0) + 1
+    # 桶排序
     b = [[] for i in range(len(nums)+1)]
-    for key, v in d.iteritems():
-      b[v].append(key)
-
+    for number, freq in freq_dict.iteritems():
+      b[freq].append(number)
     result = []
     for i in range(len(nums), -1, -1):
       if b[i]:

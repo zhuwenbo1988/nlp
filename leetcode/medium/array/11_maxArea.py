@@ -2,7 +2,7 @@
 
 '''
 
-动态规划
+双指针
 
 '''
 # https://leetcode-cn.com/problems/container-with-most-water/

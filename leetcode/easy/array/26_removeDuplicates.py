@@ -1,5 +1,11 @@
 # coding=utf-8
 
+'''
+
+维护一个新的长度
+
+'''
+
 # https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/
 
 class Solution(object):

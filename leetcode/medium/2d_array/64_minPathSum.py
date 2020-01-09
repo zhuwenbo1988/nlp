@@ -16,16 +16,16 @@ class Solution(object):
     """
     m = len(grid)
     n = len(grid[0])
-    matrix = [[0] * n for i in range(m)]
+    dp = [[0] * n for i in range(m)]
     for i in range(m):
       for j in range(n):
         if i == 0 and j == 0:
-          matrix[i][j] = grid[i][j]
+          dp[i][j] = grid[i][j]
         else:
           if i-1 < 0:
-            matrix[i][j] = grid[i][j] + matrix[i][j-1]
+            dp[i][j] = grid[i][j] + dp[i][j-1]
           elif j-1 < 0:
-            matrix[i][j] = grid[i][j] + matrix[i-1][j]
+            dp[i][j] = grid[i][j] + dp[i-1][j]
           else:
-            matrix[i][j] = min(grid[i][j] + matrix[i-1][j], grid[i][j] + matrix[i][j-1])
-    return matrix[m-1][n-1]
+            dp[i][j] = min(grid[i][j] + dp[i-1][j], grid[i][j] + dp[i][j-1])
+    return dp[m-1][n-1]

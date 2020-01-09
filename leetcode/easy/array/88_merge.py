@@ -29,4 +29,4 @@ class Solution(object):
         nums1[p] = nums1[p1]
         p += -1
         p1 += -1
-    nums1[:p2 + 1] = nums2[:p2 + 1]    
+    nums1[:p2 + 1] = nums2[:p2 + 1]

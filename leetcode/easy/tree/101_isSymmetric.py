@@ -19,6 +19,7 @@ class Solution(object):
     """
     if not root:
       return True
+    # 1.层次遍历
     result = defaultdict(list)
     l = []
     l.append((1, root))
@@ -33,6 +34,7 @@ class Solution(object):
       # 只要node不是None,即使左右节点是None,也要入栈
       l.append((level+1, node.left))
       l.append((level+1, node.right))
+    # 判断每一层是不是回文
     for level in result:
       nums = result[level]
       if not nums:

@@ -1,5 +1,11 @@
 # coding=utf-8
 
+'''
+
+深度优先遍历
+
+'''
+
 # https://leetcode-cn.com/problems/path-sum-ii/
 
 # Definition for a binary tree node.
@@ -10,7 +16,7 @@
 #         self.right = None
 
 class Solution(object):
-  def pathSum(self, root, sum):
+  def pathSum(self, root, _sum):
     """
     :type root: TreeNode
     :type sum: int
@@ -19,13 +25,14 @@ class Solution(object):
     result = []
     if not root:
       return result
-    def find(node, curr_sum, tmp):
-      if curr_sum == sum and not node.left and not node.right:
+    def find(node, tmp):
+      # 叶子节点
+      if sum(tmp) == _sum and not node.left and not node.right:
         result.append(tmp)
         return
       if node.left:
-        find(node.left, curr_sum + node.left.val, tmp + [node.left.val])
+        find(node.left, tmp + [node.left.val])
       if node.right:
-        find(node.right, curr_sum + node.right.val, tmp + [node.right.val])
-    find(root, root.val, [] + [root.val])
+        find(node.right, tmp + [node.right.val])
+    find(root, [] + [root.val])
     return result

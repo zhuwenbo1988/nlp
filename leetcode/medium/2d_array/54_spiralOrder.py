@@ -23,14 +23,18 @@ class Solution(object):
     di = 0
     dj = 1
     for _ in range(len(matrix) * len(matrix[0])):
+      # 1.打印
       result.append(matrix[i][j])
+      # 2.置0
       matrix[i][j] = 0
-      m = (i + di) % len(matrix)
-      n = (j + dj) % len(matrix[0])
-      if matrix[m][n] == 0:
+      # 3.下一步是否已经走过,如果已经走过,则交换di和dj
+      next_i = (i + di) % len(matrix)
+      next_j = (j + dj) % len(matrix[0])
+      if matrix[next_i][next_j] == 0:
         tmp = di
         di = dj
         dj = -tmp
+      # 4.确定下一步
       i += di
       j += dj
     return result
