@@ -4,6 +4,19 @@
 
 只能递归
 
+先找要删除的节点
+找到后,分四种情况处理
+1.叶子节点
+直接删除
+2.只有左子树
+用左子树代替当前节点
+3.只有右子树
+用右子树代替当前节点
+4.左右子树都有
+先找到右子树的左下方节点
+将当前节点置为左下方节点
+然后删除右子树中的左下方节点
+
 '''
 
 #  https://leetcode-cn.com/problems/delete-node-in-a-bst/
@@ -30,13 +43,14 @@ class Solution(object):
     elif root.val < key:
       root.right = self.deleteNode(root.right, key)
     else:
-      # 左右子树其中一个为空
-      if not root.left or not root.right:
-        if root.left:
-          root = root.left
-        else:
-          root = root.right
-      # 难点
+      # 叶子节点
+      if not root.left and not root.right:
+        root = None
+      elif root.left and not root.right: # 只有左子树
+        root = root.left
+      elif not root.left and root.right: # 只有右子树
+        root = root.right
+      # 难点: 左右子树都不空
       else:
         # 取出右子树
         cur = root.right

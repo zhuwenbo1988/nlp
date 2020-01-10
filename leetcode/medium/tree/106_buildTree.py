@@ -47,3 +47,36 @@ class Solution(object):
           l.insert(0, curr)
           post_ptr += -1
     return root
+
+'''
+
+递归版本
+
+构建二叉树的问题本质上就是：
+找到各个子树的根节点
+构建该根节点的左子树
+构建该根节点的右子树
+
+'''
+
+class Solution(object):
+  def buildTree(self, inorder, postorder):
+    """
+    :type inorder: List[int]
+    :type postorder: List[int]
+    :rtype: TreeNode
+    """
+    if len(inorder) == 0:
+      return None
+    # 前序遍历第一个值为根节点
+    root = TreeNode(postorder[-1])
+    # 查找根节点在中序遍历中的位置
+    mid = 0
+    while inorder[mid] != root.val:
+      mid += 1
+    # 构建左子树
+    # 难点是前序数组的切分方法
+    root.left = self.buildTree(inorder[:mid], postorder[:mid])
+    # 构建右子树
+    root.right = self.buildTree(inorder[mid+1:], postorder[mid:-1])
+    return root

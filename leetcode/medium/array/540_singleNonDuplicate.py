@@ -1,6 +1,15 @@
 # coding=utf-8
 
+'''
 
+不重复元素的左边有偶数个元素,设为A,右边也有偶数个元素,设为B
+A中元素,偶数索引的元素与偶数索引+1的元素相等
+B中元素,偶数索引的元素与偶数索引+1的元素不等
+所以使用二分搜索检验偶数索引,如果中点为奇数索引,则减一
+
+
+
+'''
 
 # https://leetcode-cn.com/problems/single-element-in-a-sorted-array/
 

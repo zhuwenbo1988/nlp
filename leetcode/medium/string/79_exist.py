@@ -34,9 +34,11 @@ class Solution(object):
     if word[0] != board[i][j]:
       return False
 
+    # 当前的点是合格的
+    self.path.append((i, j))
+
     # 判断后面的词
     word = word[1:]
-    self.path.append((i,j))   
 
     # 全部匹配
     if not word:

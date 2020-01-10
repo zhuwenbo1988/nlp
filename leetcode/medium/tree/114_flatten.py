@@ -1,5 +1,14 @@
 # coding=utf-8
 
+'''
+
+前序遍历的结果转换成链表
+但是要求原地转换
+
+
+
+
+'''
 # https://leetcode-cn.com/problems/flatten-binary-tree-to-linked-list/
 
 # Definition for a binary tree node.
