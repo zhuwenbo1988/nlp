@@ -21,10 +21,8 @@ class Solution(object):
     min_l = [0] * n
     max_l[0] = nums[0]
     min_l[0] = nums[0]
-    result = nums[0]
 
     for i in range(1, n):
       max_l[i] = max(max_l[i-1] * nums[i], min_l[i-1] * nums[i], nums[i])
       min_l[i] = min(max_l[i-1] * nums[i], min_l[i-1] * nums[i], nums[i])
-      result = max(result, max_l[i])
-    return result
+    return max(max_l)
