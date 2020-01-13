@@ -27,6 +27,7 @@ class Solution(object):
         i = idx + 1
     left = -1
     if nums:
+      # i == j
       if nums[i] == target:
         left = i
     i = 0 
@@ -42,6 +43,7 @@ class Solution(object):
         j = idx - 1
     right = -1
     if nums:
+      # i == j
       if nums[i] == target:
         right = i
     return [left, right]

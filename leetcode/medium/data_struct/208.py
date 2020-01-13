@@ -1,5 +1,11 @@
 # coding=utf-8
 
+'''
+
+trie
+
+'''
+
 # https://leetcode-cn.com/problems/implement-trie-prefix-tree/
 
 class Trie:
