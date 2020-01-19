@@ -24,7 +24,7 @@ fast = nums[nums[fast]]
 
 '''
 
-https://leetcode-cn.com/problems/find-the-duplicate-number/
+# https://leetcode-cn.com/problems/find-the-duplicate-number/
 
 class Solution(object):
   def findDuplicate(self, nums):
