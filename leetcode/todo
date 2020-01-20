@@ -1,15 +1,9 @@
 todo:
 https://leetcode-cn.com/problems/find-k-pairs-with-smallest-sums/
-
-https://leetcode-cn.com/problems/find-pivot-index/
-https://leetcode-cn.com/problems/find-the-duplicate-number/
-https://leetcode-cn.com/problems/house-robber/
-https://leetcode-cn.com/problems/increasing-triplet-subsequence/
 https://leetcode-cn.com/problems/k-closest-points-to-origin/
 https://leetcode-cn.com/problems/kth-largest-element-in-a-stream/
 https://leetcode-cn.com/problems/letter-case-permutation/
-https://leetcode-cn.com/problems/longest-common-prefix/
-https://leetcode-cn.com/problems/longest-common-subsequence/
+
 https://leetcode-cn.com/problems/longest-palindromic-subsequence/
 https://leetcode-cn.com/problems/lowest-common-ancestor-of-deepest-leaves/
 https://leetcode-cn.com/problems/maximum-length-of-pair-chain/
@@ -37,3 +31,5 @@ https://leetcode-cn.com/problems/subarray-sums-divisible-by-k/
 https://leetcode-cn.com/problems/third-maximum-number/
 https://leetcode-cn.com/problems/top-k-frequent-words/
 https://leetcode-cn.com/problems/wiggle-sort-ii/
+https://leetcode-cn.com/problems/longest-duplicate-substring/
+https://leetcode-cn.com/problems/maximum-length-of-repeated-subarray/
