@@ -24,10 +24,10 @@ class Solution(object):
       if nums[i] == nums[i-1]:
         if cnt < k:
           nums[new_len] = nums[i]
-          cnt += 1
           new_len += 1
+        cnt += 1
       else:
         nums[new_len] = nums[i]
-        cnt = 1
         new_len += 1
+        cnt = 1
     return new_len

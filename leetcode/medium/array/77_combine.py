@@ -11,11 +11,10 @@ class Solution(object):
     """
     result = []
     nums = [i for i in range(1, n+1)]
-    def find(k, other, tmp):
-      if k == 0:
+    def find(tmp, other):
+      if len(tmp) == k:
         result.append(tmp)
-        return
       for i in range(len(other)):
-        find(k-1, other[i+1:], tmp + [other[i]])
-    find(k, nums, [])
+        find(tmp + [other[i]], other[i+1:])
+    find([], nums)
     return result

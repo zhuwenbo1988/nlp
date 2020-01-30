@@ -25,6 +25,7 @@ class Solution(object):
         j = idx
       else:
         i = idx + 1
+    # 很容易忘记这一步
     left = -1
     if nums:
       # i == j
@@ -41,6 +42,7 @@ class Solution(object):
         i = idx
       else:
         j = idx - 1
+    # 很容易忘记这一步
     right = -1
     if nums:
       # i == j

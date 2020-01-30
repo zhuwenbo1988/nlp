@@ -10,10 +10,10 @@
 
 class Solution:
     def canJump(self, nums):
-        start = 0
         end = 0
         n = len(nums)
-        while start <= end and end < len(nums) - 1:
-            end = max(end, nums[start] + start)
-            start += 1
-        return end >= n - 1
+        for i in range(n-1):
+          # 非常重要的判断条件
+          if end >= i:
+            end = max(end, i + nums[i])
+        return end >= n-1

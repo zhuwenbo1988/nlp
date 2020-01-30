@@ -15,13 +15,14 @@ class Solution(object):
     :type target: int
     :rtype: int
     """
-    i = 0
-    j = len(nums) - 1
-    while i <= j:
-      idx = (i + j) // 2
-      if nums[idx] == target:
-        return idx
-      c = nums[idx]
+    left = 0
+    right = len(nums) - 1
+    # 小于等于
+    while left <= right:
+      mid = (left + right) // 2
+      if nums[mid] == target:
+        return mid
+      v = nums[mid]
       '''
       中点位于左边升序数组
         目标值小于中点,目标值大于等于左端点 - 目标值在左边升序数组的中点的左边
@@ -30,14 +31,14 @@ class Solution(object):
         目标值大于中点，目标值小于左端点 - 目标值在右边升序数组的中点的右边
         否则 - 目标值位于左边升序数组或右边升序数组的中点的左边
       '''
-      if c >= nums[0]:
-        if target < c and target >= nums[0]:
-          j = idx - 1
+      if v >= nums[0]:
+        if target < v and target >= nums[0]:
+          right = mid - 1
         else:
-          i = idx + 1
+          left = mid + 1
       else:
-        if target > c and target < nums[0]:
-          i = idx + 1
+        if target > v and target < nums[0]:
+          left = mid + 1
         else:
-          j = idx - 1
+          right = mid - 1
     return -1

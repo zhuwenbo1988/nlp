@@ -28,8 +28,10 @@ class Solution(object):
         s = nums[i] + nums[left] + nums[right]
         if s == 0:
           result.append((nums[i], nums[left], nums[right]))
+          # 跳过重复元素
           while left < right and nums[left] == nums[left+1]:
             left += 1
+          # 跳过重复元素
           while left < right and nums[right] == nums[right-1]:
             right += -1
           left += 1

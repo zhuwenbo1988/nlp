@@ -32,8 +32,6 @@ class Solution(object):
         if gap < min_gap:
           min_gap = gap
           min_sum = three_sum
-        if three_sum == target:
-          return three_sum
         if three_sum < target:
           s += 1
         else:
