@@ -16,10 +16,11 @@ class Solution(object):
     :type nums: List[int]
     :rtype: List[int]
     """
+    n = len(nums)
     result = []
-    for i in nums:
-      if nums[abs(i)-1] > 0:
-        nums[abs(i)-1] *= -1
-      else:
-        result.append(abs(i))
+    for i in range(n):
+      j = abs(nums[i]) - 1
+      if nums[j] < 0:
+        result.append(abs(nums[i]))
+      nums[j] *= -1
     return result
