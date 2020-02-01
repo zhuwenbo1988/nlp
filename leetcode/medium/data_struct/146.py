@@ -20,9 +20,10 @@ class LRUCache():
         """
         Always add the new node right after head.
         """
+        # 处理node
         node.prev = self.head
         node.next = self.head.next
-
+        # 处理head
         self.head.next.prev = node
         self.head.next = node
 
@@ -30,26 +31,11 @@ class LRUCache():
         """
         Remove an existing node from the linked list.
         """
-        prev = node.prev
-        new = node.next
+        pre_node = node.prev
+        next_node = node.next
 
-        prev.next = new
-        new.prev = prev
-
-    def _move_to_head(self, node):
-        """
-        Move certain node in between to the head.
-        """
-        self._remove_node(node)
-        self._add_node(node)
-
-    def _pop_tail(self):
-        """
-        Pop the current tail.
-        """
-        res = self.tail.prev
-        self._remove_node(res)
-        return res
+        pre_node.next = next_node
+        next_node.prev = pre_node
 
     def __init__(self, capacity):
         """
@@ -58,8 +44,9 @@ class LRUCache():
         self.cache = {}
         self.size = 0
         self.capacity = capacity
-        self.head, self.tail = DLinkedNode(), DLinkedNode()
 
+        # 双向链表
+        self.head, self.tail = DLinkedNode(), DLinkedNode()
         self.head.next = self.tail
         self.tail.prev = self.head
         
@@ -74,7 +61,8 @@ class LRUCache():
             return -1
 
         # move the accessed node to the head;
-        self._move_to_head(node)
+        self._remove_node(node)
+        self._add_node(node)
 
         return node.value
 
@@ -98,10 +86,13 @@ class LRUCache():
 
             if self.size > self.capacity:
                 # pop the tail
-                tail = self._pop_tail()
-                del self.cache[tail.key]
+                del_node = self.tail.prev
+                self._remove_node(del_node)
+                del self.cache[del_node.key]
                 self.size -= 1
         else:
             # update the value.
             node.value = value
-            self._move_to_head(node)
+            # 插入头部
+            self._remove_node(node)
+            self._add_node(node)
