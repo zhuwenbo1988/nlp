@@ -20,9 +20,11 @@ class Solution(object):
     m[0] = -1
     for i in range(len(nums)):
       curr_sum += nums[i]
+      # 保险的判断
       if k != 0:
         curr_sum = curr_sum % k
       if curr_sum in m:
+        # 连续子序列长度大于等于2
         if i - m[curr_sum] > 1:
           return True
       else:

@@ -4,6 +4,8 @@
 
 双指针
 
+难以想到，背吧
+
 '''
 
 # https://leetcode-cn.com/problems/subarray-product-less-than-k/
