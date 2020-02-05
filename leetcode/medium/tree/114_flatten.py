@@ -2,11 +2,9 @@
 
 '''
 
-前序遍历的结果转换成链表
-但是要求原地转换
+原地转换等同于用right表示next
 
-
-
+链表的结果是先序遍历的,但是本题的方法是在中序遍历的基础上进行的
 
 '''
 # https://leetcode-cn.com/problems/flatten-binary-tree-to-linked-list/
@@ -29,18 +27,16 @@ class Solution(object):
       while root:
         l.insert(0, root)
         root = root.left
-
-      if l:
-        node = l[0]
-        del l[0]
-        tmp = node.right
-        #左子树放到右子树，左子树置空
-        node.right = node.left
-        node.left = None
-
-        # 右子树最后一个节点
-        while node.right:
-          node = node.right
-        node.right = tmp
-        # 从右子树开始
-        root = tmp
+      # 取出中序遍历的节点
+      node = l[0]
+      del l[0]
+      # 左子树放到右子树，左子树置空
+      tmp = node.right
+      node.right = node.left
+      node.left = None
+      # 将原来的右子树放到原来的左子树(现在是当前节点的右子树)的最后一个节点
+      while node.right:
+        node = node.right
+      node.right = tmp
+      # 中序遍历最后要处理右节点
+      root = tmp
