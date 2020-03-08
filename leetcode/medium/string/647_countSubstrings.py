@@ -1,5 +1,11 @@
 # coding=utf-8 
 
+'''
+
+动态规划
+
+'''
+
 # https://leetcode-cn.com/problems/palindromic-substrings/
 
 class Solution(object):
