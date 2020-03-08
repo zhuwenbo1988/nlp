@@ -23,6 +23,7 @@ class Solution(object):
     min_dp[0] = nums[0]
 
     for i in range(1, n):
+      # max和min的顺序无所谓
       max_dp[i] = max(max_dp[i-1] * nums[i], min_dp[i-1] * nums[i], nums[i])
       min_dp[i] = min(max_dp[i-1] * nums[i], min_dp[i-1] * nums[i], nums[i])
     return max(max_dp)
