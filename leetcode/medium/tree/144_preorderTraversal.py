@@ -1,5 +1,11 @@
 # coding=utf-8
 
+'''
+
+栈
+
+'''
+
 # https://leetcode-cn.com/problems/binary-tree-preorder-traversal/
 
 # Definition for a binary tree node.
