@@ -24,15 +24,16 @@ class Solution(object):
     :rtype: TreeNode
     """
     path = {root:None}
-    def bfs(node):
-      if node:
-        if node.left:
-          path[node.left] = node
-        if node.right:
-          path[node.right] = node
-        bfs(node.left)
-        bfs(node.right)
-    bfs(root)
+    stack = [root]
+    while p not in path or q not in path:
+      node = stack[0]
+      del stack[0]
+      if node.left:
+        path[node.left] = node
+        stack.insert(0, node.left)
+      if node.right:
+        path[node.right] = node
+        stack.insert(0, node.right)
     # 寻找公共节点,总会碰到的
     l1 = p
     l2 = q
@@ -44,3 +45,37 @@ class Solution(object):
       if not l2:
         l2 = p
     return l1
+
+'''
+
+另一种节省空间的做法
+
+'''
+
+class Solution(object):
+  def lowestCommonAncestor(self, root, p, q):
+    """
+    :type root: TreeNode
+    :type p: TreeNode
+    :type q: TreeNode
+    :rtype: TreeNode
+    """
+    paths = {}
+    path_stack = [([root], root)]
+    while p not in paths or q not in paths:
+      path, node = path_stack[0]
+      del path_stack[0]
+      if node == p:
+        paths[p] = path
+      if node == q:
+        paths[q] = path
+      if node.left:
+        path_stack.insert(0, (path + [node.left], node.left))
+      if node.right:
+        path_stack.insert(0, (path + [node.right], node.right))
+    i = 0
+    while i < min(len(paths[p]), len(paths[q])):  # 比较两条路径
+      if paths[p][i] != paths[q][i]:
+        break
+      i += 1
+    return paths[p][i - 1]
