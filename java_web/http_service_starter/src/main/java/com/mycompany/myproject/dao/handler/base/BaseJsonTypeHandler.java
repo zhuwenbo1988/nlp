@@ -1,6 +1,5 @@
 package com.mycompany.myproject.dao.handler.base;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mycompany.myproject.utils.JsonUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.type.BaseTypeHandler;
@@ -11,8 +10,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * POJO里有个属性是非基本数据类型，在DB存储时我们想存的是json格式的字符串，从DB拿出来时想直接映射成目标类型，也即json格式的字符串字段与Java类的相互类型转换。
+ */
 public abstract class BaseJsonTypeHandler<T extends Object> extends BaseTypeHandler<T> {
-    private static final ObjectMapper mapper = new ObjectMapper();
     private Class<T> clazz;
  
     public BaseJsonTypeHandler(Class<T> clazz) {
@@ -42,7 +43,7 @@ public abstract class BaseJsonTypeHandler<T extends Object> extends BaseTypeHand
  
     private String toJson(T object) {
         try {
-            return JsonUtils.toJson(object);
+            return JsonUtils.objectToJsonStr(object, false);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -51,7 +52,7 @@ public abstract class BaseJsonTypeHandler<T extends Object> extends BaseTypeHand
     private T toObject(String content, Class<?> clazz) {
         if (!StringUtils.isBlank(content)) {
             try {
-                return (T) JsonUtils.fromJson(content, clazz);
+                return (T) JsonUtils.jsonToPoJo(content, clazz, false);
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }

@@ -1,7 +1,7 @@
 # 可配置的内容参考官网
 spring:
   datasource:
-    # 数据库连接配置，以mysql为例
+    # 数据库连接配置,以mysql为例
     url: jdbc:mysql://localhost:3306/seckill?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false
     username:
     password:
@@ -9,3 +9,10 @@ spring:
     # 数据源类型
     type: com.alibaba.druid.pool.DruidDataSource
     filters: stat
+  # jackson常用配置
+  jackson:
+    # 实现前端下划线和后端驼峰的自动转化
+    property-naming-strategy: SNAKE_CASE
+    # 不为空的属性才会序列化,具体属性可看JsonInclude.Include
+    default-property-inclusion: NON_NULL
+    date-format: yyyy-MM-dd HH:mm:ss

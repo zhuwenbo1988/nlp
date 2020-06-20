@@ -7,9 +7,6 @@ import org.springframework.context.annotation.ImportResource;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-/**
- * @author
- */
 @SpringBootApplication
 @ImportResource("classpath:applicationContext.xml")
 @EnableCaching
