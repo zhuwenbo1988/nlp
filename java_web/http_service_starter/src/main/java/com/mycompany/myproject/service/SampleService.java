@@ -1,4 +1,7 @@
 package com.mycompany.myproject.service;
 
-public interface SampleService {
+import org.springframework.stereotype.Service;
+
+@Service
+public class SampleService {
 }

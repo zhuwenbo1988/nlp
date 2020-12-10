@@ -40,7 +40,7 @@ public class NumberValidationUtils {
      * decimal + integer [0, MAX)
      */
     public final static String REGEX_NON_NEGATIVE_REAL_NUMBER = "^\\+?(\\d+|\\d+\\.\\d+)$"; //$NON-NLS-1$
-    private static boolean isMatch(String regex, String orginal) {
+    public static boolean isMatch(String regex, String orginal) {
         if (orginal == null || orginal.trim().equals("")) { //$NON-NLS-1$
             return false;
         }
